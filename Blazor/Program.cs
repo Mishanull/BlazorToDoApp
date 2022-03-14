@@ -10,7 +10,6 @@ builder.Services.AddRazorPages();
 builder.Services.AddServerSideBlazor();
 builder.Services.AddScoped<FileContext>();
 builder.Services.AddScoped<IToDoHome, ToDoFileDAO>();
-
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

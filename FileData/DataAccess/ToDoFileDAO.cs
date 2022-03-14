@@ -39,12 +39,14 @@ public class ToDoFileDAO : IToDoHome
        
     }
 
-    public async Task UpdateAsync(Todo todo)
+    public Task UpdateAsync(Todo todo)
     {
-        Todo t = fileContext.Todos.First(t => t.Id == todo.Id);
-        t.OwnerId = todo.OwnerId;
-        t.IsCompleted = todo.IsCompleted;
+        Todo toUpdate = fileContext.Todos.First(t => t.Id == todo.Id);
+        toUpdate.IsCompleted = todo.IsCompleted;
+        toUpdate.OwnerId = todo.OwnerId;
+        toUpdate.Title = todo.Title;
         fileContext.SaveChanges();
-
+        return Task.CompletedTask;
     }
+    
 }
